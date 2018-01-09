@@ -1,7 +1,12 @@
 (TeX-add-style-hook
  "propp-reconstructed"
  (lambda ()
-   (LaTeX-add-bibitems
-    "propp1968morphology"))
- :bibtex)
+   (TeX-run-style-hooks
+    "latex2e"
+    "article"
+    "art10"
+    "ijcai18"
+    "times")
+   (LaTeX-add-bibliographies))
+ :latex)
 
