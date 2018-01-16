@@ -2,24 +2,57 @@
 \usepackage{ijcai18}
 \usepackage{times}
 
+% our packages
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{xcolor}
+\usepackage{fancyref}
+\usepackage{tikz}
+\usetikzlibrary{decorations,shapes,calc,positioning,fit,backgrounds,shapes.multipart}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{listings}
+\lstset{ %
+  language=prolog,
+%  frame=l,                   			% adds a frame around the code
+  basicstyle=\scriptsize\ttfamily,	% use courier
+  breaklines=false,
+  xleftmargin=2.5em,
+  aboveskip=0.5em,
+  belowskip=0.5em,
+%  belowcaptionskip=5em,
+  numbers=left,
+  backgroundcolor=\color{gray!10},
+  frame=single,
+  framerule=0pt
+}
+\lstdefinelanguage{instal}
+{keywords={if,initiates,terminates,generates,obl,when,institution,bridge,source,sink,cross,fluent,xgenerates,xinitiates,xterminates,initially,type,exogenous,inst,violation,noninertial,obligation},
+morecomment=[l]{\%}}
+
+\newcommand{\mnote}[1]{\textcolor{magenta}{MT: #1}}
+\newcommand{\jnote}[1]{\textcolor{teal}{JAP: #1}}
+\newcommand{\snote}[1]{\textcolor{blue}{SB: #1}}
+
 \title{Propp Reconstructed: Building Story Components From Formal Models of Tropes}
 
 % REPLACE WITH ANON PAPER ID
-\author{
-Matt Thompson$^1$, 
-Julian Padget$^2$, 
-Steve Battle$^3$, 
-\\ 
-$^1$ Centre for Creative Computing, Bath Spa University, UK \\
-$^2$ Dept. of Computer Science, University of Bath, UK \\
-$^3$ Dept. Computer Science and Creative Technologies, University of the West of
-England, Bristol, UK \\
-%
-m.thompson3@bathspa.ac.uk,
-j.a.padget@bath.ac.uk,
-steve.battle@uwe.ac.uk
-% \setlength\titlebox{4.5in}
-}
+\author{Paper \#tbd}
+%% \author{
+%% Matt Thompson$^1$, 
+%% Julian Padget$^2$, 
+%% Steve Battle$^3$, 
+%% \\ 
+%% $^1$ Centre for Creative Computing, Bath Spa University, UK \\
+%% $^2$ Dept. of Computer Science, University of Bath, UK \\
+%% $^3$ Dept. Computer Science and Creative Technologies, University of the West of
+%% England, Bristol, UK \\
+%% %
+%% m.thompson3@bathspa.ac.uk,
+%% j.a.padget@bath.ac.uk,
+%% steve.battle@uwe.ac.uk
+%% }
 
 
 \begin{document}
@@ -27,12 +60,31 @@ steve.battle@uwe.ac.uk
 \maketitle
 
 \begin{abstract}
-  Abstract to go here.
+Propp's character functions and story moves have been the mainstays of much interactive narrative research over the past few decades, despite their recognised limitations, arising from the genre-specific origins (Russian folk tales), the (mostly) fixed linear story structure and \jnote{anything else?} We also observe that Propp's motivation is the dissection of stories into a canonical set of story components.
+
+In contrast, the approach we propose is constructive, using tropes (story elements) that may be composed into nested, branching structures for any genre. Tropes are in effect a refactoring of character functions and story moves into a single entity that captures a story fragment in terms of roles and actions, and in so doing enables the synthesis of hierarchical, alternating structures that cannot be expressed in Propp's formalism. We formalize tropes using an existing action language (InstAL) and facilitate authoring tropes through a simple constrained natural language front end (TropICAL). \jnote{not sure we need to talk about guidance of NPCs}
 \end{abstract}
 
 \section{Introduction}
 
 \section{Related Work}
+
+Patterns of Destiny: Narrative Structures of Foundation and Doom in the ...
+By Diane M. Sharon has a critique of Propp.
+
+Do we need to rule out of scope the structuralist vs. formalist debate?
+
+Did you find this: Hendrick's symbolic logic model
+
+@article{hendricks1973methodology,
+  title={Methodology of narrative structural analysis},
+  author={Hendricks, William O},
+  journal={Semiotica},
+  volume={7},
+  number={2},
+  pages={163--184},
+  year={1973}
+}
 
 \section{Propp's Morphology of the Folktale}
 % Opinions are divided about the utility of Propp
