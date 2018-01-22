@@ -60,14 +60,83 @@ morecomment=[l]{\%}}
 \maketitle
 
 \begin{abstract}
-Propp's character functions and story moves have been the mainstays of much interactive narrative research over the past few decades, despite their recognised limitations, arising from the genre-specific origins (Russian folk tales), the (mostly) fixed linear story structure and \jnote{anything else?} We also observe that Propp's motivation is the dissection of stories into a canonical set of story components.
+Propp's character functions and story moves have been the mainstays of much
+interactive narrative research over the past few decades, despite their
+recognised limitations, arising from the genre-specific origins (Russian folk
+tales), the (mostly) fixed linear story structure and lack of means of creating
+new abstractions for story components. \mnote{added part about abstractions} We also observe that Propp's motivation is the dissection of stories into a canonical set of story components.
 
-In contrast, the approach we propose is constructive, using tropes (story elements) that may be composed into nested, branching structures for any genre. Tropes are in effect a refactoring of character functions and story moves into a single entity that captures a story fragment in terms of roles and actions, and in so doing enables the synthesis of hierarchical, alternating structures that cannot be expressed in Propp's formalism. We formalize tropes using an existing action language (InstAL) and facilitate authoring tropes through a simple constrained natural language front end (TropICAL). \jnote{not sure we need to talk about guidance of NPCs}
+In contrast, the approach we propose is constructive, using tropes (story elements) that may be composed into nested, branching structures for any genre. Tropes are in effect a refactoring of character functions and story moves into a single entity that captures a story fragment in terms of roles and actions, and in so doing enables the synthesis of hierarchical, alternating structures that cannot be expressed in Propp's formalism. We formalize tropes using an existing action language (InstAL) and facilitate authoring tropes through a simple constrained natural language front end (TropICAL).
 \end{abstract}
 
 \section{Introduction}
+Vladimir Propp's \emph{Morphology of the Folktale}~\cite{propp1968morphology},
+originally published in 1928 in Russian, takes a formal approach to the
+description of Russian folktales. As a formalist, Propp's intention with the
+\emph{morphology} is to break the folktales
+down into their common themes and occurrences, so that any tale can then be
+expressed as a combination of these shared patterns.
+Section~\ref{sec:morphology} describes Propp's system in detail, including a
+worked example of the morphology in use.
+
+Interactive Storytelling systems use techniques such as symbolic Artificial
+Intelligence, planning systems and
+multi-agent systems to create believable story worlds in which the player
+interacts with intelligent ``characters'' whose actions form the basis of a
+story world. Rather than the story being linear, however, the player has the
+opportunity to encounter different story paths when they make different
+combinations of actions.
+
+One approach to the creation of such an interactive story world is to use a
+planning system to decide which parts of a story must happen, given the
+decisions taken by the player until that point. Systems such as Young's
+\emph{Mimesis}~\cite{young2004architecture} architecture use planners to
+``direct'' the behaviour of intelligent agents acting out the roles of
+characters in a story, either replanning to accommodate the actions of a player
+or intervening to prevent narrative-breaking actions from occuring. In order to
+plan alternative possibilities of a story, it must be broken down into discrete
+components that can be added or removed as part of a plan. This is the approach
+taken by Mateas and Stern's \emph{Fa\c{c}ade}, which uses a \emph{drama manager}
+to re-arrange units of narrative action they call \emph{beats} (based on a
+concept from McKee's book for screenwriters~\cite{mckee1997substance}).
+
+There are many benefits of using Propp's morphology for these
+components --- it is easy to understand, and maps to a wide range of stories.
+Though Propp's system is flexible, it does have several shortcomings, however.
+It is designed for the description of linear narratives, the result of which
+makes it difficult to use its components for a system in which the narrative
+must be re-arranged as it is being created. Furthermore, its design is
+tightly-coupled to Russian folktales, both in the roles and character actions it
+describes as well as their possible arrangement in a story structure. Finally,
+it does not allow the creation of new story components through abstraction (by
+embedding existing story fragments inside of new ones, for example).
+
+This paper introduces the concept and formalisation of \emph{story tropes},
+through which we describe reusable story components to describe story fragments
+at multiple levels of abstraction. We derive the concept of trope from a folk
+understanding of story patterns that has risen in popularity due to the
+formation of media-related internet communities. Like Propp's morphology, a
+trope can be defined in terms of the actions available to characters performing
+certain roles within a narrative. Unlike Propp, tropes can be used to describe
+patterns of a story at any level of abstraction - from a single line of dialogue
+to the structure of a story as a whole. Section~\ref{sec:tropes} describes the
+benefits of using tropes as an extension of Propp's morphology for story components.
+
+After examining the current literature on narrative
+formalisms and components in Section~\ref{sec:related}, we delve deeper into
+Propp's Morphology in Section~\ref{sec:morphology}. Section~\ref{sec:tropes}
+gives an informal introduction and explanation of the concept of story tropes,
+with Section~\ref{sec:tropical} formalising these ideas in TropICAL, a
+controlled natural language programming language for tropes.
+Section~\ref{sec:instal} describes how our language compiles into the social
+institutions that can be used to govern the behaviour of character agents in a
+story simulation, with Section~\ref{sec:mas} explaining how these agents would
+be authored to interact with the institutional implementation of the tropes. The
+paper concludes with an evaluation in Section~\ref{sec:evaluation} and
+concluding remarks with future work in Section~\ref{sec:conclusions}.
 
 \section{Related Work}
+\label{sec:related}
 
 Patterns of Destiny: Narrative Structures of Foundation and Doom in the ...
 By Diane M. Sharon has a critique of Propp.
@@ -87,6 +156,7 @@ Did you find this: Hendrick's symbolic logic model
 }
 
 \section{Propp's Morphology of the Folktale}
+\label{sec:morphology}
 % Opinions are divided about the utility of Propp
 % Need a base of evidence to identify the shortcomings of both Character
 % functions and story moves, in order to establish our rationale (to be
@@ -94,26 +164,32 @@ Did you find this: Hendrick's symbolic logic model
 % are a good alternative
 
 \section{Tropes}
+\label{sec:tropes}
 % explain what tropes are and how they break stories up in different
 % and better ways than Propp: present them as a refactoring (?!) of
 % Propp which allows hierarchical, branching and cyclic structure
 % and re-use
 
 \section{TropICAL: A Programming Language for Tropes}
+\label{sec:tropical}
 % Express what we want TropICAL to do in order to author the tropes
 
 \section{Compiling TropICAL Tropes to Social Institutions}
+\label{sec:instal}
 % the technical stuff: will need rapid intro to event+state models
 
 \section{Using Tropes in a Multi-Agent System}
+\label{sec:mas}
 % present agents as actors whose behaviour is guided by the story
 % non-compliance with the story is either handled by the author
 % (forseen violation) or by the super-trope (unforeseen violation)
 % leading to action by the story manager
 
 \section{Evaluation and Discussion}
+\label{sec:evaluation}
 
 \section{Conclusions and Future Work}
+\label{sec:conclusions}
 
 
 \bibliographystyle{named}
